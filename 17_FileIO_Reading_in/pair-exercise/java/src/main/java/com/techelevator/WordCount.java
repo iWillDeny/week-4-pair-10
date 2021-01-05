@@ -27,28 +27,22 @@ public class WordCount {
 		String tempLine = " ";
 		
 		//loop over the file line by line until there are no more lines
-		while(scanner.hasNextLine())
+		while(scanner.hasNext())
 		{
-			//split the line into individual words
-			//String[] tempLine = scanner.nextLine().split(" ");
-			tempLine = scanner.nextLine();
-			String[] tempArray = tempLine.split(" ");
+
+			tempLine = scanner.next();
+			
 			
 			//count the number of words in the line
-			wordCount += tempArray.length;
+			wordCount++;
 			
 			//split apart the line into individual characters by the lack of white space
-			String[] tempChar = tempLine.split("");
-			
-			//loop over each individual letter
-			for(String letter: tempChar)
+			if(tempLine.endsWith(".") || tempLine.endsWith("!") || tempLine.endsWith("?"))
 			{
-				//if(letter.equals("?") || letter.equals(".") || letter.equals("!"))
-				  if(letter.equals(".") || letter.equals("!"))
-					{
-					sentenceCount += 1;
-					}
+				sentenceCount++;
 			}
+			
+		
 		}
 		//return the word and sentence count
 				System.out.println("Word Count: " + wordCount);

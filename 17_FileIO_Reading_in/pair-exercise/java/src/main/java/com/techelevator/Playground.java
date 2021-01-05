@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
-public class WordCount {
+public class Playground {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
@@ -21,12 +21,12 @@ public class WordCount {
 		{
 			theLine = input.nextLine();
 
-			String[] words = theLine.split(" ");
+			String[] words = theLine.split("\\s+");
 			count += words.length;
 			String[] charToCount = theLine.split("");
-			for(String letter: charToCount)
+			for(String word: words)
 			{
-				if(letter.equals("."))
+				if(word.endsWith(".") || word.endsWith("?") || word.endsWith("!"))
 				{
 					sentenceCount+=1;
 				}
