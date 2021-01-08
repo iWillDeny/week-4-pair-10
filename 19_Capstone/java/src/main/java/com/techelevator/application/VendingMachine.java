@@ -1,9 +1,12 @@
 package com.techelevator.application;
 
+import com.techelevator.model.catagories.Chips;
+
 public class VendingMachine 
 {
     public void run()
     {
+    	
         while(true)
         {
             String choice = "display";
@@ -12,11 +15,11 @@ public class VendingMachine
             {
                 // display the vending machine slots
             }
-            else if(choice.equals("purchase"))
+            else if(choice.equals("buy"))
             {
                 // make a purchase
             }
-            else if(choice.equals("exit"))
+            else if(choice.equals("quit"))
             {
                 // good bye
                 break;
