@@ -43,11 +43,11 @@ public class UserInput {
 		
 		Scanner userSelection = new Scanner(System.in);
 		
-		BigDecimal one1 = new BigDecimal(1.00);
-		BigDecimal two2 = new BigDecimal(2.00);
-		BigDecimal five5 = new BigDecimal(5.00);
-		BigDecimal ten10 = new BigDecimal(10.00);
-		BigDecimal twen20 = new BigDecimal(20.00);
+		BigDecimal one1 = new BigDecimal("1.00");
+		BigDecimal two2 = new BigDecimal("2.00");
+		BigDecimal five5 = new BigDecimal("5.00");
+		BigDecimal ten10 = new BigDecimal("10.00");
+		BigDecimal twen20 = new BigDecimal("20.00");
 		String denominationUserInput = userSelection.nextLine();
 		String usersSelection = denominationUserInput.trim();
 		

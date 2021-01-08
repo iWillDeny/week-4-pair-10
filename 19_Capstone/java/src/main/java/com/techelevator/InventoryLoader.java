@@ -5,15 +5,19 @@ import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class InventoryLoader {
 
 
 
-    public static List<Products> getProducts(){
+    public static Map<String, Products> getProducts(){
 
-        List<Products> productsList = new ArrayList<>();
+        Map<String, Products> productsList = new TreeMap<>();
+        
+        
         File fileDirectory = new File("vendingmachine.csv");
 
         try (Scanner inventoryFilesScanner = new Scanner(fileDirectory)) {
@@ -28,7 +32,7 @@ public class InventoryLoader {
                 String productType = inventoryFileArray[3];
                 Products productWriter = new Products(productType, productName, slotId, price);
       
-                productsList.add(productWriter);
+                productsList.put(slotId, productWriter);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

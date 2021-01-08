@@ -8,7 +8,18 @@ public class Products {
 	String productName;
 	String slotId;
 	BigDecimal price;
+	int quantity = 5;
+	
+	public int getQuantity() 
+	{
+		return quantity;
+	}
 
+	public void purchase()
+	{
+		quantity --;
+	}
+	
 	public String getProductName() {
 		return productName;
 	}

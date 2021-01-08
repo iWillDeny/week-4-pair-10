@@ -5,7 +5,10 @@ import java.util.Map;
 
 public class Inventory {
 
-//    Map<String, Integer> inventoryDisplay = new HashMap<>();
-//
-//    public static
+    Map<String, Products> products;
+
+    public Inventory()
+    {
+    	products = InventoryLoader.getProducts();
+    }
 }
