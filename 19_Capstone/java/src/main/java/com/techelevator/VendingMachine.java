@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public class VendingMachine 
 {
+	private Inventory inventoryMap = new Inventory();
+	
     public void run()
     {
     	
@@ -23,7 +25,7 @@ public class VendingMachine
             }
             else if(choice.equals("quit"))
             {
-                System.out.println("GoodBye");
+            	UserOutput.quit();
                 break;
             }
             else 
@@ -48,21 +50,28 @@ public class VendingMachine
 			if (buyProductsMenuChoice.contains("1"))
 			{
 				UserOutput.displayMoneyInputOptions();
-				System.out.println("Initial Balance: " + Transactions.getBalance());
+				System.out.println("_________________________________________");
+				System.out.println();
+				System.out.println("Balance: $" + Transactions.getBalance());
 				BigDecimal feedMoneyCapture = UserInput.feedMoney();
-				System.out.println("This is the amount deposited: " + feedMoneyCapture);
+				System.out.println("_________________________________________");
+				System.out.println();
+				System.out.println("Deposited: " + feedMoneyCapture);
 				Transactions.deposit(feedMoneyCapture);
-				System.out.println("Updated Balance: " + Transactions.getBalance());
+				System.out.println();
+				System.out.println("Balance: $" + Transactions.getBalance());
+				System.out.println("_________________________________________");
+
 
 //        	System.out.println(Transactions.getBalance());
 			}
 			else if (buyProductsMenuChoice.contains("2")) 
 			{
-				System.out.println("This Should be a product list");
+				UserOutput.displayInventoryList();
 			}
 			else if (buyProductsMenuChoice.contains("3")) 
 			{
-				System.out.println(UserOutput.returnChange());
+				UserOutput.returnChange();
 				break;
 			}
 		}
