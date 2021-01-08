@@ -1,18 +1,17 @@
 package com.techelevator;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserInput {
 	
-	private static Scanner userSelection = new Scanner(System.in);
+//	private static 
 	
-	public static String GetHomeScreen() {
+	public static String GetHomeScreenOption() {
 		
-		System.out.println("Please make a selection");
-		System.out.println("(1) Display Vending Machine Items");
-		System.out.println("(2) Purchase");
-		System.out.println("(3) Exit");
+		Scanner userSelection = new Scanner(System.in);
+		
 		String mainMenuUserInput = userSelection.nextLine();
 		String usersSelection = mainMenuUserInput.trim().toLowerCase();
 		
@@ -24,37 +23,25 @@ public class UserInput {
 			return "quit";
 		} else {
 			return "";
+			
 		}
 		
 	}
 	
-	public static String secondMenu()
+	public static String purchaseMenu()
 	{
-		System.out.println("Please make a selection");
-		System.out.println("(1) Feed Money");
-		System.out.println("(2) Select Product");
-		System.out.println("(3) Finish Transaction");
-		
-		System.out.println("Current Money Provided: " + Transactions.getBalance());
+		Scanner userSelection = new Scanner(System.in);
 		
 		String mainMenuUserInput = userSelection.nextLine();
 		String usersSelection = mainMenuUserInput.trim().toLowerCase();
 		
-		if (usersSelection.contains("1")) {
-			feedMoney();
-		} else if (usersSelection.contains("2")) {
-			return "THIS FEATURE IS NOT COMPLETE";
-		} else if (usersSelection.contains("3")) {
-			return "THIS FEATURE IS NOT COMPLETE";
-		} else {
-			return "";
-		}
+		return usersSelection;
 		
-		
-		return "";
 	}
 	
 	public static BigDecimal feedMoney() {
+		
+		Scanner userSelection = new Scanner(System.in);
 		
 		BigDecimal one1 = new BigDecimal(1.00);
 		BigDecimal two2 = new BigDecimal(2.00);
@@ -62,14 +49,7 @@ public class UserInput {
 		BigDecimal ten10 = new BigDecimal(10.00);
 		BigDecimal twen20 = new BigDecimal(20.00);
 		String denominationUserInput = userSelection.nextLine();
-		String usersSelection = denominationUserInput.trim().toLowerCase();
-		System.out.println("Please select desired deposit denomination");
-		System.out.println();
-		System.out.println("(1) $1.00");
-		System.out.println("(2) $2.00");
-		System.out.println("(3) $5.00");
-		System.out.println("(4) $10.00");
-		System.out.println("(5) $20.00");
+		String usersSelection = denominationUserInput.trim();
 		
 		if (usersSelection.contains("1")) {
 			return one1;

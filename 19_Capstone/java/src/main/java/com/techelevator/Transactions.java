@@ -2,17 +2,19 @@ package com.techelevator;
 import java.math.BigDecimal;
 public class Transactions
 {
-	private static BigDecimal balance;
+	private static BigDecimal balance = new BigDecimal(0);
+	
+	
 	
 	public static BigDecimal getBalance()
 	{
 		return balance;
 	}
 	
-	public static BigDecimal deposit()
+	public static BigDecimal deposit(BigDecimal deposit)
 	{
-		BigDecimal deposit = UserInput.feedMoney();
-		return balance.add(deposit); 
+		balance = balance.add(deposit);
+		return balance;
 	}
 	
 	public static BigDecimal withdrawal()
@@ -20,5 +22,8 @@ public class Transactions
 		return new BigDecimal(0);
 	}
 	
-	
+//	public static BigDecimal addfeedMoney()
+//	{
+//		
+//	}
 }
