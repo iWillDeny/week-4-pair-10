@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.techelevator.model.catagories.Chips;
+
 public class VendingMachine 
 {
     public void run()
