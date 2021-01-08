@@ -1,6 +1,6 @@
 package com.techelevator;
 
-import com.techelevator.model.catagories.Chips;
+
 
 public class VendingMachine 
 {
@@ -13,11 +13,11 @@ public class VendingMachine
 
             if(choice.equals("display"))
             {
-                // display the vending machine slots
+                UserInput.GetHomeScreen();
             }
             else if(choice.equals("buy"))
             {
-                // make a purchase
+                UserInput.feedMoney();
             }
             else if(choice.equals("quit"))
             {
@@ -26,5 +26,6 @@ public class VendingMachine
             }
         }
     }
+
     
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Inventory {
 
-    Map<String, Integer> inventoryDisplay = new HashMap<>();
-
-    public static
+//    Map<String, Integer> inventoryDisplay = new HashMap<>();
+//
+//    public static
 }

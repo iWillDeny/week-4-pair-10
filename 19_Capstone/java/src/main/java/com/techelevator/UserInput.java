@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class UserInput {
 	
-//	private static Scanner userSelection = new Scanner(System.in);
+	private static Scanner userSelection = new Scanner(System.in);
 	
 	public static String GetHomeScreen() {
 		
@@ -28,7 +28,31 @@ public class UserInput {
 		
 	}
 	
-	public static 
+	public static String secondMenu()
+	{
+		System.out.println("Please make a selection");
+		System.out.println("(1) Feed Money");
+		System.out.println("(2) Select Product");
+		System.out.println("(3) Finish Transaction");
+		
+		System.out.println("Current Money Provided: " + Transactions.getBalance());
+		
+		String mainMenuUserInput = userSelection.nextLine();
+		String usersSelection = mainMenuUserInput.trim().toLowerCase();
+		
+		if (usersSelection.contains("1")) {
+			feedMoney();
+		} else if (usersSelection.contains("2")) {
+			return "THIS FEATURE IS NOT COMPLETE";
+		} else if (usersSelection.contains("3")) {
+			return "THIS FEATURE IS NOT COMPLETE";
+		} else {
+			return "";
+		}
+		
+		
+		return "";
+	}
 	
 	public static BigDecimal feedMoney() {
 		
