@@ -1,6 +1,4 @@
-package com.techelevator.application;
-
-import com.techelevator.model.catagories.Chips;
+package com.techelevator;
 
 public class VendingMachine 
 {

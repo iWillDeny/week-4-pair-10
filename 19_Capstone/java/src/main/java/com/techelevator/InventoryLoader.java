@@ -1,6 +1,4 @@
-package com.techelevator.model.fileIO;
-
-import com.techelevator.model.products.Products;
+package com.techelevator;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.techelevator.ui;
+package com.techelevator;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

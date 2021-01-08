@@ -1,6 +1,4 @@
-package com.techelevator.ui;
-
-import com.techelevator.model.Inventory;
+package com.techelevator;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.techelevator.model.products;
+package com.techelevator;
 
 import java.math.BigDecimal;
 
