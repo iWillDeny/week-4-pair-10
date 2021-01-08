@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Playground
 {
@@ -17,8 +18,11 @@ public class Playground
 			int nickels = ((newChange % 25) % 10) / 5;
 			
 			System.out.println("Your change is " + quarters + " quarters " + dimes + " dimes and " + nickels + " nickels");
-		
-
+			
+			List<Products> list = InventoryLoader.getProducts();
+			
+			System.out.println(list.get(1).getProductName());
+			
 	}
 
 }

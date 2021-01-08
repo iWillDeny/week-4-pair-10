@@ -27,10 +27,7 @@ public class InventoryLoader {
                 BigDecimal price = new BigDecimal(inventoryFileArray[2]);
                 String productType = inventoryFileArray[3];
                 Products productWriter = new Products(productType, productName, slotId, price);
-               System.out.println(productWriter.getProductName());
-                System.out.println(productWriter.getPrice());
-                System.out.println(productWriter.getSlotId());
-                
+      
                 productsList.add(productWriter);
             }
         } catch (FileNotFoundException e) {
