@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class VendingMachine 
 {
-	private Inventory inventoryMap = new Inventory();
+	private Inventory products = new Inventory();
 	
     public void run()
     {
@@ -69,9 +69,8 @@ public class VendingMachine
 			{
 				UserOutput.displayInventoryList();
 				String userProductSelect = UserInput.productSelectionUserInput();
-				Products selectedProducts = UserOutput.getProductInfo();
-				System.out.println(selectedProducts.getProductName());
-				UserOutput.displayProductInfo();
+				System.out.println(UserOutput.displayKey(userProductSelect));
+				System.out.println(UserOutput.displayUserOrderInfo(userProductSelect));
 			}
 			else if (buyProductsMenuChoice.contains("3")) 
 			{

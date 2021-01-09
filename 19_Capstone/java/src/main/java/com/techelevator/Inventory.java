@@ -4,10 +4,14 @@ import java.util.Map;
 
 public class Inventory {
 
-    Map<String, Products> products;
+    static Map<String, Products> products;
 
     public Inventory()
     {
     	products = InventoryLoader.getProducts();
     }
+    public static Map<String, Products> getInventory() {
+    	return products;
+    }
+
 }

@@ -70,50 +70,6 @@ public class UserOutput {
 
 	}
 	
-//	public static insufficientFunds()
-//	{
-//		
-//		if (Transactions.getBalance() < )
-//	}
-//	
-//	public static productAvailability()
-//	{
-//		
-//	}
-//	
-//	public static productViabilty()
-//	{
-//		
-//	}
-	public static void displayProductInfo()
-	{
-		String selection = UserInput.productSelectionUserInput();
-		Map<String, Products> prod = InventoryLoader.getProducts();
-		System.out.println(prod.entrySet());
-	}
-	
-	
-	
-	public static Products getProductInfo()
-	{	
-		String selection = UserInput.productSelectionUserInput();
-		Map<String, Products> prod = InventoryLoader.getProducts();
-		for(Map.Entry<String, Products> entry: prod.entrySet())
-		{
-			if(selection.equals(entry.getKey()))
-			{
-			String getSlotId = entry.getValue().getSlotId();
-			BigDecimal getPrice = entry.getValue().getPrice();
-			String getName = entry.getValue().getProductName();
-			int getQuantity = entry.getValue().getQuantity();
-			String getProductType = entry.getValue().getProductType();
-			Products chosenProducts = new Products(getProductType, getName, getSlotId, getPrice);
-			return chosenProducts;
-			}
-			
-		}
-			return null;
-		}
 	public static void displayInventoryList() 
 	{
 		Map<String, Products> prod = InventoryLoader.getProducts();
@@ -127,9 +83,31 @@ public class UserOutput {
 			System.out.println(getSlotId + " " + getName + " " + "$" + getPrice + " " + "QTY: " + getQuantity);
 		}
 		
+	
 		System.out.println();
 		System.out.println("Please enter product location ID");
 	}
+	
+	//This method checks to see if the user selection exists as a slotID;
+	public static boolean displayKey(String selection)
+	{
+		boolean temp = Inventory.getInventory().containsKey(selection);
+		return temp;
+	}
+	
+	public static String displayUserOrderInfo(String slotID)
+	{
+		String itemName = Inventory.getInventory().get(slotID).getProductName();
+		BigDecimal cost = Inventory.getInventory().get(slotID).getPrice();
+		String classOfProduct = Inventory.getInventory().get(slotID).getProductType();
+		String tummyLove = Products.tummyTalk(classOfProduct);
+		BigDecimal remainingBalance = Transactions.getBalance().subtract(cost);
+		return "You purchased " + itemName + " which cost $" + cost + 
+				" and you have $" + remainingBalance + " left to spend on yummy treats. " +
+		"Also " + tummyLove;
+	}
+		
+	
 	
 	public static void quit()
 	{
