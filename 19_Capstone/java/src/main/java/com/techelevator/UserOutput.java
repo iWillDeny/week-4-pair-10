@@ -41,6 +41,25 @@ public class UserOutput {
 		System.out.println("_________________________________________");
 	}
 	
+	public static void displayBalance()
+	{
+		System.out.println();
+		System.out.println("Balance: $" + Transactions.getBalance());
+		System.out.println("_________________________________________");
+	}
+	
+	
+	public static void takeMoneyUpdateBalance()
+	{
+		
+		BigDecimal feedMoneyCapture = UserInput.feedMoney();
+		System.out.println("_________________________________________");
+		System.out.println();
+		System.out.println("Deposited: " + feedMoneyCapture);
+		Transactions.deposit(feedMoneyCapture);
+		
+	}
+	
 	public static void displayPurchaseMenuOptions()
 	{
 		System.out.println("_________________________________________");
@@ -70,6 +89,15 @@ public class UserOutput {
 
 	}
 	
+	public static void requestProductSelection()
+	{
+		System.out.println("_________________________________________");
+		System.out.println();
+		System.out.println("Please enter product location ID");
+		System.out.println("_________________________________________");
+
+	}
+	
 	public static void displayInventoryList() 
 	{
 		Map<String, Products> prod = InventoryLoader.getProducts();
@@ -83,9 +111,6 @@ public class UserOutput {
 			System.out.println(getSlotId + " " + getName + " " + "$" + getPrice + " " + "QTY: " + getQuantity);
 		}
 		
-	
-		System.out.println();
-		System.out.println("Please enter product location ID");
 	}
 	
 	//This method checks to see if the user selection exists as a slotID;

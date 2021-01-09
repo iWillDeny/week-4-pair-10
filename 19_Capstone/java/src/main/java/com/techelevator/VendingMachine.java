@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
+import java.security.PublicKey;
 
 public class VendingMachine 
 {
@@ -42,6 +43,7 @@ public class VendingMachine
     
     public void buyProducts()
 	{
+    	
 		while (true)
 		{
 			UserOutput.displayPurchaseMenuOptions();
@@ -49,18 +51,10 @@ public class VendingMachine
 			String buyProductsMenuChoice = UserInput.purchaseMenu();
 			if (buyProductsMenuChoice.contains("1"))
 			{
+				UserOutput.displayBalance();
 				UserOutput.displayMoneyInputOptions();
-				System.out.println("_________________________________________");
-				System.out.println();
-				System.out.println("Balance: $" + Transactions.getBalance());
-				BigDecimal feedMoneyCapture = UserInput.feedMoney();
-				System.out.println("_________________________________________");
-				System.out.println();
-				System.out.println("Deposited: " + feedMoneyCapture);
-				Transactions.deposit(feedMoneyCapture);
-				System.out.println();
-				System.out.println("Balance: $" + Transactions.getBalance());
-				System.out.println("_________________________________________");
+				UserOutput.takeMoneyUpdateBalance();
+				UserOutput.displayBalance();
 
 
 //        	System.out.println(Transactions.getBalance());
@@ -68,8 +62,10 @@ public class VendingMachine
 			else if (buyProductsMenuChoice.contains("2")) 
 			{
 				UserOutput.displayInventoryList();
+				UserOutput.requestProductSelection();
 				String userProductSelect = UserInput.productSelectionUserInput();
-				System.out.println(UserOutput.displayKey(userProductSelect));
+//				System.out.println(UserOutput.displayKey(userProductSelect));
+				Transactions.withdrawal(returnProductCost(userProductSelect));
 				System.out.println(UserOutput.displayUserOrderInfo(userProductSelect));
 			}
 			else if (buyProductsMenuChoice.contains("3")) 
@@ -78,5 +74,11 @@ public class VendingMachine
 				break;
 			}
 		}
+	}
+    
+    public static BigDecimal returnProductCost(String slotId) 
+	{
+		BigDecimal cost = Inventory.getInventory().get(slotId).getPrice();
+		return cost;
 	}
 }

@@ -17,9 +17,12 @@ public class Transactions
 		return balance;
 	}
 	
-	public static BigDecimal withdrawal()
+	public static BigDecimal withdrawal(BigDecimal withdrawal)
 	{
-		return new BigDecimal("0.00");
+	
+		balance = balance.subtract(withdrawal);
+		return balance;
+		
 	}
 	
 //	public static BigDecimal addfeedMoney()
