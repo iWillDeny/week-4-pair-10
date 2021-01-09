@@ -29,6 +29,10 @@ public class Products {
 	public BigDecimal getPrice() {
 		return price;
 	}
+	public String getProductType() {
+		return productType;
+	}
+	
 	
 	public Products(String productType, String productName, String slotId, BigDecimal price) {
         

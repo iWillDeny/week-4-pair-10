@@ -68,6 +68,10 @@ public class VendingMachine
 			else if (buyProductsMenuChoice.contains("2")) 
 			{
 				UserOutput.displayInventoryList();
+				String userProductSelect = UserInput.productSelectionUserInput();
+				Products selectedProducts = UserOutput.getProductInfo();
+				System.out.println(selectedProducts.getProductName());
+				UserOutput.displayProductInfo();
 			}
 			else if (buyProductsMenuChoice.contains("3")) 
 			{

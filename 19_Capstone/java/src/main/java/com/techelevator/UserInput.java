@@ -23,9 +23,19 @@ public class UserInput {
 			return "quit";
 		} else {
 			return "";
-			
+		
 		}
 		
+	}
+	
+	public static String productSelectionUserInput()
+	{
+		Scanner userSelection = new Scanner(System.in);
+		
+		String userProductSelectionInput = userSelection.nextLine();
+		String usersSelection = userProductSelectionInput.trim().toUpperCase();
+		
+		return usersSelection;
 	}
 	
 	public static String purchaseMenu()
