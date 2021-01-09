@@ -131,6 +131,11 @@ public class UserOutput {
 				" and you have $" + remainingBalance + " left to spend on yummy treats. " +
 		"Also " + tummyLove;
 	}
+	
+	public static void displayPleaseAddMoney()
+	{
+		System.out.println("Please add money before making a selection");
+	}
 		
 	
 	

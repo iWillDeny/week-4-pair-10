@@ -18,7 +18,7 @@ public class VendingMachine
             
             if(choice.equals("display"))
             {
-            	showProducts();
+            	UserOutput.displayInventoryList();
             }
             else if(choice.equals("buy"))
             {
@@ -36,10 +36,10 @@ public class VendingMachine
         }
 
     }
-    public void showProducts()
-    {
-    	UserOutput.displayInventoryList();
-    }
+//    public void showProducts()
+//    {
+//    	UserOutput.displayInventoryList();
+//    }
     
     public void buyProducts()
 	{
@@ -64,9 +64,11 @@ public class VendingMachine
 				UserOutput.displayInventoryList();
 				UserOutput.requestProductSelection();
 				String userProductSelect = UserInput.productSelectionUserInput();
-//				System.out.println(UserOutput.displayKey(userProductSelect));
 				Transactions.withdrawal(returnProductCost(userProductSelect));
 				System.out.println(UserOutput.displayUserOrderInfo(userProductSelect));
+				
+				
+				
 			}
 			else if (buyProductsMenuChoice.contains("3")) 
 			{
@@ -81,4 +83,21 @@ public class VendingMachine
 		BigDecimal cost = Inventory.getInventory().get(slotId).getPrice();
 		return cost;
 	}
+    
+//    public static boolean hasEnoughMoney()
+//    {
+//    	String slotId = UserInput.productSelectionUserInput();
+//    	BigDecimal productCost = returnProductCost(slotId);
+//    	BigDecimal balance = Transactions.getBalance();
+//    	int result = productCost.compareTo(balance);
+//    	if(result < 0)
+//		{
+//			return true;
+//		}
+//		else
+//		{
+//			return false;
+//		}
+//	}
 }
+
