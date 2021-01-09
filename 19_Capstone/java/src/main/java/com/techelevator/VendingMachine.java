@@ -3,6 +3,8 @@ package com.techelevator;
 import java.math.BigDecimal;
 import java.security.PublicKey;
 
+import javax.imageio.stream.ImageOutputStream;
+
 public class VendingMachine 
 {
 	private Inventory products = new Inventory();
@@ -18,7 +20,7 @@ public class VendingMachine
             
             if(choice.equals("display"))
             {
-            	UserOutput.displayInventoryList();
+            	UserOutput.displayInventoryList(products);
             }
             else if(choice.equals("buy"))
             {
@@ -36,19 +38,16 @@ public class VendingMachine
         }
 
     }
-//    public void showProducts()
-//    {
-//    	UserOutput.displayInventoryList();
-//    }
-    
+
     public void buyProducts()
 	{
     	
 		while (true)
 		{
+//			this begins the sequence at the "(2) Purchase" menu
 			UserOutput.displayPurchaseMenuOptions();
-
 			String buyProductsMenuChoice = UserInput.purchaseMenu();
+//			
 			if (buyProductsMenuChoice.contains("1"))
 			{
 				UserOutput.displayBalance();
@@ -57,22 +56,49 @@ public class VendingMachine
 				UserOutput.displayBalance();
 
 
-//        	System.out.println(Transactions.getBalance());
+//			This begins the sequence at the second menu
 			}
 			else if (buyProductsMenuChoice.contains("2")) 
 			{
-				UserOutput.displayInventoryList();
+				BigDecimal balanceCheck = new BigDecimal("0.00");
+				UserOutput.displayInventoryList(products);
 				UserOutput.requestProductSelection();
 				String userProductSelect = UserInput.productSelectionUserInput();
-				Transactions.withdrawal(returnProductCost(userProductSelect));
-				System.out.println(UserOutput.displayUserOrderInfo(userProductSelect));
 				
-				
+//				make sure user input matches possible selections
+				if (!matchesA1_D4(userProductSelect))
+				{	
+					UserOutput.displayIncorrectSelectionMessage();
+					break;
+				}
+//				make sure user has enough money to make the purchase	
+				if (Transactions.getBalance().compareTo(returnProductCost(userProductSelect)) < 0)
+				{
+					System.out.println("put some money in");
+				}
+//				user buys product after checking to make sure product is in stock. 
+				else
+				{	
+					Products productSelected = Inventory.getProductbyId(userProductSelect);
+					if(productSelected.getQuantity() <  1)
+					{
+						UserOutput.displaySoldOutMessage();
+						continue;
+					}
+					UserOutput.displayUserOrderInfo(productSelected);
+					
+					
+					System.out.println(productSelected.getQuantity());
+					productSelected.purchase();
+				}
 				
 			}
+//			gives the user their change	
 			else if (buyProductsMenuChoice.contains("3")) 
 			{
 				UserOutput.returnChange();
+				Transactions.withdrawal(Transactions.getBalance());
+				
 				break;
 			}
 		}
@@ -84,20 +110,18 @@ public class VendingMachine
 		return cost;
 	}
     
-//    public static boolean hasEnoughMoney()
-//    {
-//    	String slotId = UserInput.productSelectionUserInput();
-//    	BigDecimal productCost = returnProductCost(slotId);
-//    	BigDecimal balance = Transactions.getBalance();
-//    	int result = productCost.compareTo(balance);
-//    	if(result < 0)
-//		{
-//			return true;
-//		}
-//		else
-//		{
-//			return false;
-//		}
-//	}
+    public static boolean matchesA1_D4(String selection)
+    {
+    	boolean matches = ( selection.substring(0, 1).equals("A")
+    					 || selection.substring(0, 1).equals("B")
+    					 || selection.substring(0, 1).equals("C")
+    					 || selection.substring(0, 1).equals("D"))
+    					&& (selection.substring(1, 2).equals("1")
+    					 || selection.substring(1, 2).equals("2")
+    					 || selection.substring(1, 2).equals("3")
+    					 || selection.substring(1, 2).equals("4"));
+    	
+    	return matches;
+    }
 }
 

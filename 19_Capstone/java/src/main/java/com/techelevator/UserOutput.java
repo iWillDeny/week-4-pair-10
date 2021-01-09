@@ -20,9 +20,9 @@ public class UserOutput {
 		System.out.println();
 		System.out.println("Your change is");
 		System.out.println();
-		System.out.println("Quarters: " + quarters + " ($" + quarters * .25 + "0)");
-		System.out.println("Dimes:    " +    dimes + " ($" + dimes * .10 + "0)");
-		System.out.println("Nickels:  " + nickels + " ($" + nickels * .05 + "0)");
+		System.out.println("Quarters: " + quarters + " ($" + quarters * .25 + ")");
+		System.out.println("Dimes:    " +    dimes + " ($" + dimes * .10 + ")");
+		System.out.println("Nickels:  " + nickels + " ($" + nickels * .05 + ")");
 		System.out.println("_________________________________________");
 		
 	}
@@ -59,6 +59,14 @@ public class UserOutput {
 		Transactions.deposit(feedMoneyCapture);
 		
 	}
+	
+//	public static void displayFundingMessage(String slotId)
+//	{
+//		if (Transactions.getBalance().compareTo(returnProductCost(slotId)) < 0)
+//		{
+//			System.out.println("put some money in");
+//		}
+//	}
 	
 	public static void displayPurchaseMenuOptions()
 	{
@@ -98,9 +106,9 @@ public class UserOutput {
 
 	}
 	
-	public static void displayInventoryList() 
+	public static void displayInventoryList(Inventory inventory) 
 	{
-		Map<String, Products> prod = InventoryLoader.getProducts();
+		Map<String, Products> prod = inventory.getProducts();
 		for(Map.Entry<String, Products> entry: prod.entrySet())
 		{
 			String getSlotId = entry.getValue().getSlotId();
@@ -113,28 +121,57 @@ public class UserOutput {
 		
 	}
 	
-	//This method checks to see if the user selection exists as a slotID;
-	public static boolean displayKey(String selection)
+	public static void displayIncorrectSelectionMessage()
 	{
-		boolean temp = Inventory.getInventory().containsKey(selection);
-		return temp;
+		System.out.println("_________________________________________");
+		System.out.println();
+    	System.out.println("Please enter a valid location ID");
+    	System.out.println("_________________________________________");
 	}
 	
-	public static String displayUserOrderInfo(String slotID)
+	public static void displayUserOrderInfo(Products product)
 	{
-		String itemName = Inventory.getInventory().get(slotID).getProductName();
-		BigDecimal cost = Inventory.getInventory().get(slotID).getPrice();
-		String classOfProduct = Inventory.getInventory().get(slotID).getProductType();
-		String tummyLove = Products.tummyTalk(classOfProduct);
-		BigDecimal remainingBalance = Transactions.getBalance().subtract(cost);
-		return "You purchased " + itemName + " which cost $" + cost + 
+		String itemName = product.getProductName();
+		BigDecimal cost = product.getPrice();
+		String tummyLove = product.tummyTalk();
+		BigDecimal remainingBalance = Transactions.withdrawal(cost);
+		System.out.println("You purchased " + itemName + " which cost $" + cost + 
 				" and you have $" + remainingBalance + " left to spend on yummy treats. " +
-		"Also " + tummyLove;
+		"Also " + tummyLove);
+	}
+	
+	public static String gumYum()
+	{
+		return "Chew Chew, Yum!";
+	}
+	
+	public static String candyYum()
+	{
+		return "Munch Munch, Yum!";
+	}
+	
+	public static String drinkYum()
+	{
+		return "Glug Glug, Yum!";
+	}
+	
+	public static String chipYum()
+	{
+		return "Crunch Crunch, Yum!";
 	}
 	
 	public static void displayPleaseAddMoney()
 	{
 		System.out.println("Please add money before making a selection");
+	}
+	
+	public static void displaySoldOutMessage()
+	{
+		System.out.println("_________________________________________");
+		System.out.println();
+    	System.out.println("         SOLD OUT");
+    	System.out.println("Please make another selection");
+    	System.out.println("_________________________________________");
 	}
 		
 	
@@ -143,11 +180,13 @@ public class UserOutput {
 	{
 		System.out.println("_________________________________________");
 		System.out.println();
-    	System.out.println(" Thank you for using Vendo-Matic 800");
-        System.out.println("         Have a nice day! " + '\u263A');
-        System.out.println("     Umbrella Corporation 2021");
-        System.out.println("For questions or comments please contact");
-        System.out.println(" Cyberdyne Systems www.cyberdyne.skynet");
+    	System.out.println("   Thank you for using Vendo-Matic 800");
+        System.out.println("          Have a nice day! " + '\u263A');
+        System.out.println("       Umbrella Corporation 2021");
+        System.out.println(" For questions or comments please contact:");
+        System.out.println("       model101@cyberdyne.skynet");
+        System.out.println("          Cyberdyne Systems");
+        System.out.println("18144 El Camino Real, Sunnyvale, California");
     	System.out.println("_________________________________________");
 	}
 }

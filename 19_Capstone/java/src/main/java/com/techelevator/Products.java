@@ -2,7 +2,7 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-public class Products {
+public abstract class Products {
 	
 	String productType = "";
 	String productName;
@@ -17,7 +17,7 @@ public class Products {
 
 	public void purchase()
 	{
-		quantity --;
+		quantity --;	
 	}
 	
 	public String getProductName() {
@@ -42,16 +42,17 @@ public class Products {
         this.productType = productType;
     }
 	
-	public static String tummyTalk(String productType) {
-		if (productType.equals("Chips")) {
-			return "Crunch Crunch, Yum!";
-		}else if (productType.equals("Drink")) {
-			return "Glug Glug, Yum!";
-		}else if (productType.equals("Candy")){
-			return "Munch Munch, Yum!";
-		}else {
-			return "Chew Chew, Yum!";
-		}
-
-	}
+	public abstract String tummyTalk();
+//	{
+//		if (productType.equals("Chip")) {
+//			return "Crunch Crunch, Yum!";
+//		}else if (productType.equals("Drink")) {
+//			return "Glug Glug, Yum!";
+//		}else if (productType.equals("Candy")){
+//			return "Munch Munch, Yum!";
+//		}else {
+//			return "Chew Chew, Yum!";
+//		}
+//
+//	}
 }

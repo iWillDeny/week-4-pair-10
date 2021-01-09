@@ -13,5 +13,15 @@ public class Inventory {
     public static Map<String, Products> getInventory() {
     	return products;
     }
+    
+    public static Products getProductbyId(String SlotId)
+    {
+    	return products.get(SlotId);
+    }
+    
+    public Map<String, Products> getProducts()
+    {
+    	return products;
+    }
 
 }

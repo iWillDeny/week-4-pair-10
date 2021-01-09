@@ -21,7 +21,7 @@ public class InventoryLoader {
         File fileDirectory = new File("vendingmachine.csv");
 
         try (Scanner inventoryFilesScanner = new Scanner(fileDirectory)) {
-            inventoryFilesScanner.nextLine();
+            //inventoryFilesScanner.nextLine();
 
             while (inventoryFilesScanner.hasNextLine()) {
                 String tempLine = inventoryFilesScanner.nextLine();
@@ -30,7 +30,26 @@ public class InventoryLoader {
                 String productName = inventoryFileArray[1];
                 BigDecimal price = new BigDecimal(inventoryFileArray[2]);
                 String productType = inventoryFileArray[3];
-                Products productWriter = new Products(productType, productName, slotId, price);
+                
+                Products productWriter;
+                
+                // if statement to determine which type of product to create
+                if (productType.equals("Chip"))
+                {
+                	productWriter = new Chip(productType, productName, slotId, price);
+                }
+                else if (productType.equals("Candy"))
+                {
+                	productWriter = new Candy(productType, productName, slotId, price);
+                }
+                else if (productType.equals("Drink"))
+                {
+                	productWriter = new Drink(productType, productName, slotId, price);
+                }
+                else
+                {
+                	productWriter = new Gum(productType, productName, slotId, price);
+                }
       
                 productsList.put(slotId, productWriter);
             }
