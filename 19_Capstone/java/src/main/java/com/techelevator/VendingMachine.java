@@ -8,6 +8,7 @@ import javax.imageio.stream.ImageOutputStream;
 public class VendingMachine 
 {
 	private Inventory products = new Inventory();
+	private Logger activityLogger = new Logger();
 	
     public void run()
     {
