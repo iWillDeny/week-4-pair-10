@@ -142,6 +142,8 @@ public class UserOutput {
 		System.out.println("Cost: $" + cost);
 		System.out.println("Balance: $" + remainingBalance);
 		System.out.println(tummyLove);
+    	System.out.println("_________________________________________");
+
 
 	}
 	

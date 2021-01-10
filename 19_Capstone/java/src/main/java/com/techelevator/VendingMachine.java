@@ -97,8 +97,6 @@ public class VendingMachine
 					}
 					UserOutput.displayUserOrderInfo(productSelected);
 					activityLogger.logMessage(productSelected.getProductName() +  " " + productSelected.getSlotId() + " $" + preTransactionBalance + " $" + Transactions.getBalance());
-					
-					System.out.println(productSelected.getQuantity());
 					productSelected.purchase();
 				}
 				
