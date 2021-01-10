@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.lang.Character.UnicodeBlock;
 import java.math.BigDecimal;
 import java.security.PublicKey;
 
@@ -68,13 +69,17 @@ public class VendingMachine
 				UserOutput.displayInventoryList(products);
 				UserOutput.requestProductSelection();
 				String userProductSelect = UserInput.productSelectionUserInput();
-				
+//				UnicodeBlock.AN returnUnicode = U+23CE;
 //				make sure user input matches possible selections
 				if (!matchesA1_D4(userProductSelect))
 				{	
 					UserOutput.displayIncorrectSelectionMessage();
 					break;
-				}
+				} 
+//				else
+//				{
+//					UserOutput.displayPurchaseMenuOptions();
+//				}
 //				make sure user has enough money to make the purchase	
 				if (Transactions.getBalance().compareTo(returnProductCost(userProductSelect)) < 0)
 				{
@@ -127,7 +132,8 @@ public class VendingMachine
     					&& (selection.substring(1, 2).equals("1")
     					 || selection.substring(1, 2).equals("2")
     					 || selection.substring(1, 2).equals("3")
-    					 || selection.substring(1, 2).equals("4"));
+    					 || selection.substring(1, 2).equals("4"))
+    					 && (selection.length() > 0) && (selection.length() < 3);
     	
     	return matches;
     }

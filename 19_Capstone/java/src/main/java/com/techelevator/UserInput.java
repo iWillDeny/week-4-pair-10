@@ -33,7 +33,7 @@ public class UserInput {
 		Scanner userSelection = new Scanner(System.in);
 		
 		String userProductSelectionInput = userSelection.nextLine();
-		String usersSelection = userProductSelectionInput.trim().toUpperCase().substring(0, 2);
+		String usersSelection = userProductSelectionInput.toUpperCase();
 		
 		return usersSelection;
 	}
@@ -69,8 +69,12 @@ public class UserInput {
 			return five5;
 		} else if (usersSelection.contains("4")) {
 			return ten10;
-		} else {
+		} else if (usersSelection.contains("5")) {
 			return twen20;
+		} else if (usersSelection.contains("6")) {
+			return new BigDecimal("0.00");
+		} else {
+			return new BigDecimal("0.00");
 		}
 	}
 	

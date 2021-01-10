@@ -18,11 +18,11 @@ public class UserOutput {
 		
 		System.out.println("_________________________________________");
 		System.out.println();
-		System.out.println("Your change is");
+		System.out.println("Your change is: $" + Transactions.getBalance());
 		System.out.println();
-		System.out.println("Quarters: " + quarters + " ($" + quarters * .25 + ")");
-		System.out.println("Dimes:    " +    dimes + " ($" + dimes * .10 + ")");
-		System.out.println("Nickels:  " + nickels + " ($" + nickels * .05 + ")");
+		System.out.println("Quarters: " + quarters);
+		System.out.println("Dimes:    " +    dimes);
+		System.out.println("Nickels:  " + nickels);
 		System.out.println("_________________________________________");
 		
 	}
@@ -38,6 +38,7 @@ public class UserOutput {
 		System.out.println("(3) $5.00");
 		System.out.println("(4) $10.00");
 		System.out.println("(5) $20.00");
+		System.out.println("(6) Return to menu");
 		System.out.println("_________________________________________");
 	}
 	
