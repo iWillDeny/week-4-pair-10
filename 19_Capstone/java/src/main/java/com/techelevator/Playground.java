@@ -6,23 +6,22 @@ import java.util.List;
 public class Playground
 {
 
-//	public static void main(String[] args)
-//	{
-//	
-//			BigDecimal oneHundred = new BigDecimal(100);
-//			BigDecimal balance = new BigDecimal(1.80);
-//			BigDecimal change = balance.multiply(oneHundred);
-//			int newChange = change.intValue();
-//			int quarters = newChange / 25;
-//			int dimes = (newChange % 25) / 10;
-//			int nickels = ((newChange % 25) % 10) / 5;
-//			
-//			System.out.println("Your change is " + quarters + " quarters " + dimes + " dimes and " + nickels + " nickels");
-//			
-//			List<Products> list = InventoryLoader.getProducts();
-//			
-//			System.out.println(list.get(1).getProductName());
-//			
-//	}
-
+	public static void main(String[] args)
+	{
+		System.out.println(matchesA1_D4("A9"));
+	}
+	public static boolean matchesA1_D4(String selection)
+    {
+    	boolean matches1 = ( selection.substring(0, 1).equals("A")
+    					 || selection.substring(0, 1).equals("B")
+    					 || selection.substring(0, 1).equals("C")
+    					 || selection.substring(0, 1).equals("D"))
+    				 && (selection.substring(1, 2).equals("1")
+    					 || selection.substring(1, 2).equals("2")
+    					 || selection.substring(1, 2).equals("3")
+    					 || selection.substring(1, 2).equals("4"));
+    	
+    	return matches1;
+    }
+	
 }
