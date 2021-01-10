@@ -125,7 +125,9 @@ public class VendingMachine
     
     public static boolean matchesA1_D4(String selection)
     {
-    	boolean matches = ( selection.substring(0, 1).equals("A")
+    	boolean matches = (( selection.length() > 0)
+    				   && ( selection.length() < 3)) 
+    				   && ( selection.substring(0, 1).equals("A") 
     					 || selection.substring(0, 1).equals("B")
     					 || selection.substring(0, 1).equals("C")
     					 || selection.substring(0, 1).equals("D"))
@@ -133,7 +135,7 @@ public class VendingMachine
     					 || selection.substring(1, 2).equals("2")
     					 || selection.substring(1, 2).equals("3")
     					 || selection.substring(1, 2).equals("4"))
-    					 && (selection.length() > 0) && (selection.length() < 3);
+    					;
     	
     	return matches;
     }
