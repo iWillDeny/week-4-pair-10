@@ -33,7 +33,7 @@ public class UserInput {
 		Scanner userSelection = new Scanner(System.in);
 		
 		String userProductSelectionInput = userSelection.nextLine();
-		String usersSelection = userProductSelectionInput.trim().toUpperCase();
+		String usersSelection = userProductSelectionInput.trim().toUpperCase().substring(0, 2);
 		
 		return usersSelection;
 	}

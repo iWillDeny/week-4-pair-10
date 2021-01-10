@@ -51,10 +51,14 @@ public class VendingMachine
 //			
 			if (buyProductsMenuChoice.contains("1"))
 			{
+				BigDecimal preTransactionBalance =  Transactions.getBalance();
 				UserOutput.displayBalance();
 				UserOutput.displayMoneyInputOptions();
 				UserOutput.takeMoneyUpdateBalance();
 				UserOutput.displayBalance();
+//				activityLogger.logMessage("FEED MONEY: " + UserInput.feedMoney() +
+//						" " + Transactions.getBalance());
+//				break;
 
 
 //			This begins the sequence at the second menu
@@ -75,11 +79,12 @@ public class VendingMachine
 //				make sure user has enough money to make the purchase	
 				if (Transactions.getBalance().compareTo(returnProductCost(userProductSelect)) < 0)
 				{
-					System.out.println("put some money in");
+					UserOutput.displayPleaseAddMoney();
 				}
 //				user buys product after checking to make sure product is in stock. 
 				else
 				{	
+					BigDecimal preTransactionBalance = Transactions.getBalance();
 					Products productSelected = Inventory.getProductbyId(userProductSelect);
 					if(productSelected.getQuantity() <  1)
 					{
@@ -87,7 +92,8 @@ public class VendingMachine
 						continue;
 					}
 					UserOutput.displayUserOrderInfo(productSelected);
-					
+					activityLogger.logMessage(productSelected.getProductName() +  " " + productSelected.getSlotId() +
+							preTransactionBalance + " " + Transactions.getBalance());
 					
 					System.out.println(productSelected.getQuantity());
 					productSelected.purchase();
@@ -97,8 +103,10 @@ public class VendingMachine
 //			gives the user their change	
 			else if (buyProductsMenuChoice.contains("3")) 
 			{
+				BigDecimal preCheckoutBalance = Transactions.getBalance();
 				UserOutput.returnChange();
 				Transactions.withdrawal(Transactions.getBalance());
+				activityLogger.logMessage("GIVE CHANGE: $" + preCheckoutBalance + " " + Transactions.getBalance());
 				
 				break;
 			}

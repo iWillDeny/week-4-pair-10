@@ -135,9 +135,13 @@ public class UserOutput {
 		BigDecimal cost = product.getPrice();
 		String tummyLove = product.tummyTalk();
 		BigDecimal remainingBalance = Transactions.withdrawal(cost);
-		System.out.println("You purchased " + itemName + " which cost $" + cost + 
-				" and you have $" + remainingBalance + " left to spend on yummy treats. " +
-		"Also " + tummyLove);
+		System.out.println("_________________________________________");
+		System.out.println();
+		System.out.println("Purchased: " + itemName);
+		System.out.println("Cost: $" + cost);
+		System.out.println("Balance: $" + remainingBalance);
+		System.out.println(tummyLove);
+
 	}
 	
 	public static String gumYum()
@@ -162,7 +166,11 @@ public class UserOutput {
 	
 	public static void displayPleaseAddMoney()
 	{
+		
+		System.out.println("_________________________________________");
+		System.out.println();
 		System.out.println("Please add money before making a selection");
+		System.out.println("_________________________________________");
 	}
 	
 	public static void displaySoldOutMessage()
@@ -182,7 +190,9 @@ public class UserOutput {
 		System.out.println();
     	System.out.println("   Thank you for using Vendo-Matic 800");
         System.out.println("          Have a nice day! " + '\u263A');
+        System.out.println();
         System.out.println("       Umbrella Corporation 2021");
+        System.out.println();
         System.out.println(" For questions or comments please contact:");
         System.out.println("       model101@cyberdyne.skynet");
         System.out.println("          Cyberdyne Systems");
