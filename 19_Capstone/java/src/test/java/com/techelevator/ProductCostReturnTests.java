@@ -10,11 +10,11 @@ public class ProductCostReturnTests {
 	@Test
 	public void ProductCostReturnFromSlotID_Testing_A1_Should_Return_Price() {
 		// arrange
-		String input = "A1";
+//		String input = "A1";
 
 		// act
-		BigDecimal actual = VendingMachine.returnProductCost(input);
-		BigDecimal expected = new BigDecimal(3.05);
+		BigDecimal actual = VendingMachine.returnProductCost("A1");
+		BigDecimal expected = new BigDecimal("3.05");
 		
 		
 
