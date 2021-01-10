@@ -56,8 +56,7 @@ public class VendingMachine
 				UserOutput.displayMoneyInputOptions();
 				UserOutput.takeMoneyUpdateBalance();
 				UserOutput.displayBalance();
-//				activityLogger.logMessage("FEED MONEY: " + UserInput.feedMoney() +
-//						" " + Transactions.getBalance());
+				activityLogger.logMessage("FEED MONEY: $" + preTransactionBalance + " $" + Transactions.getBalance());
 //				break;
 
 
@@ -92,8 +91,7 @@ public class VendingMachine
 						continue;
 					}
 					UserOutput.displayUserOrderInfo(productSelected);
-					activityLogger.logMessage(productSelected.getProductName() +  " " + productSelected.getSlotId() +
-							preTransactionBalance + " " + Transactions.getBalance());
+					activityLogger.logMessage(productSelected.getProductName() +  " " + productSelected.getSlotId() + " $" + preTransactionBalance + " $" + Transactions.getBalance());
 					
 					System.out.println(productSelected.getQuantity());
 					productSelected.purchase();
@@ -106,11 +104,12 @@ public class VendingMachine
 				BigDecimal preCheckoutBalance = Transactions.getBalance();
 				UserOutput.returnChange();
 				Transactions.withdrawal(Transactions.getBalance());
-				activityLogger.logMessage("GIVE CHANGE: $" + preCheckoutBalance + " " + Transactions.getBalance());
+				activityLogger.logMessage("GIVE CHANGE: $" + preCheckoutBalance + " $" + Transactions.getBalance());
 				
 				break;
 			}
 		}
+	
 	}
     
     public static BigDecimal returnProductCost(String slotId) 
